@@ -1,7 +1,9 @@
 name: Publish Package
+
 on:
   release:
     types: [created]
+
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -10,7 +12,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-          registry-url: 'https://registry.npmjs.org'
       - name: "✅ Checkout repository"
         uses: actions/checkout@v2
 
@@ -30,8 +31,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: "📦 Install packages"
         run: npm install
-      - name: "🔦 Lint"
-        run: npm run lint
       - name: "🔨 Build"
         run: npm run build
       - name: "👨‍💻 Run Test"
