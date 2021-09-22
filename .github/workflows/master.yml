@@ -52,7 +52,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: "🎉 Publish pkg"
         run: |
-          #npm config set //registry.npmjs.org/:_authToken ${NODE_AUTH_TOKEN}
+          npm config set //registry.npmjs.org/:_authToken ${NODE_AUTH_TOKEN}
           #npm access ls-collaborators nestjs-test-pkg
           npm run publish -- patch
         env:
