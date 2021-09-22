@@ -47,10 +47,8 @@ jobs:
         run: npm run test
         env:
           NODE_ENV: 'test'
-      - name: "🎉 Publish pkg"
+      - name: "🎉 Publish pkg - ${{ github.event.inputs.publishVersion }} version"
         run: |
-          ls -a
-          echo "Publish version: ${{ github.event.inputs.publishVersion }}"
           #cd ./pkg
           #echo //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} > .npmrc
           #npm access ls-collaborators nestjs-test-pkg

@@ -7,7 +7,6 @@ on:
     branches: [ master ]
 
 env:
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -53,10 +52,3 @@ jobs:
           token: ${CODECOV_TOKEN}
       - name: "📊 SonarCloud Scan"
         uses: SonarSource/sonarcloud-github-action@master
-      #- name: "🎉 Publish pkg"
-      #  run: |
-      #    cd ./pkg
-      #    echo //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} > .npmrc
-      #    #npm access ls-collaborators nestjs-test-pkg
-      #    npm run publish -- patch
-
