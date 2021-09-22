@@ -1,25 +1,61 @@
-name: "Publish pkg"
+name: "NPM package"
 
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
+      publishVersion:
+        description: 'Select version (patch | minor | major)'
         required: true
-        default: 'warning'
-      tags:
-        description: 'Test scenario tags'
+        default: 'patch'
 
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 jobs:
-  printInputs:
+  setup:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Log level: ${{ github.event.inputs.logLevel }}"
-          echo "Tags: ${{ github.event.inputs.tags }}"
+      - name: "⚙ Set up Node.js"
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: "✅ Checkout repository"
+        uses: actions/checkout@v2
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "💾 Restore packages from cache"
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: "📦 Install packages"
+        run: npm install
+      - name: "🔦 Lint"
+        run: npm run lint
+      - name: "🔨 Build"
+        run: npm run build
+      - name: "👨‍💻 Run Test"
+        run: npm run test
+        env:
+          NODE_ENV: 'test'
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: "🎉 Publish pkg"
+        run: |
+          echo "Publish version: ${{ github.event.inputs.publishVersion }}"
+          #cd ./pkg
+          #echo //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} > .npmrc
+          #npm access ls-collaborators nestjs-test-pkg
+          #npm run publish -- patch
