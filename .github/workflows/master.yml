@@ -14,7 +14,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
-          registry-url: 'https://registry.npmjs.org'
       - name: "✅ Checkout repository"
         uses: actions/checkout@v2
 
@@ -51,3 +50,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: "🎉 Publish"
+        run: |
+          cd ./pkg
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
