@@ -23,7 +23,7 @@ jobs:
       - name: "✅ Checkout repository"
         uses: actions/checkout@v2
 
-  build:
+  publish:
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -47,11 +47,6 @@ jobs:
         run: npm run test
         env:
           NODE_ENV: 'test'
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: "🎉 Publish pkg"
         run: |
           ls -a
