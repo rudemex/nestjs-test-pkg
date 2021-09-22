@@ -14,6 +14,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: "✅ Checkout repository"
         uses: actions/checkout@v2
 
@@ -33,8 +34,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: "📦 Install packages"
         run: npm install
-      - name: "📁 Showing Tree"
-        run: tree -L 4
       - name: "🔦 Lint"
         run: npm run lint
       - name: "🔨 Build"
@@ -52,8 +51,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - name: "📁 Showing Tree"
-        run: tree -L 4
       - name: "🎉 Publish"
         #run: |
         #  cd ./pkg
@@ -61,4 +58,4 @@ jobs:
         #  npm publish
         run: npm run publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
