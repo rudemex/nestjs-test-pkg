@@ -1,6 +1,6 @@
 {
   "name": "nestjs-test-pkg",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "NestJS test npm package",
   "author": {
     "name": "Maximiliano \"Mex\" Delgado",
