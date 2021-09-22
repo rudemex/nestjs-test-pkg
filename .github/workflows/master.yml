@@ -52,10 +52,10 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: "📊 SonarCloud Scan"
         uses: SonarSource/sonarcloud-github-action@master
-      - name: "🎉 Publish pkg"
-        run: |
-          cd ./pkg
-          echo //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} > .npmrc
+      #- name: "🎉 Publish pkg"
+      #  run: |
+      #    cd ./pkg
+      #    echo //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} > .npmrc
           #npm access ls-collaborators nestjs-test-pkg
-          npm run publish -- patch
+      #    npm run publish -- patch
 
