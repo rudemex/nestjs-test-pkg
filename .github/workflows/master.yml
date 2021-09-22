@@ -10,7 +10,6 @@ on:
       publishVersion:
         description: "Select version"
         required: true
-        options: [ 'patch', 'minor', 'major' ]
         default: 'patch'
 
 env:
