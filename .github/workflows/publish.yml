@@ -54,6 +54,7 @@ jobs:
     steps:
       - name: "🎉 Publish pkg"
         run: |
+          ls -a
           echo "Publish version: ${{ github.event.inputs.publishVersion }}"
           #cd ./pkg
           #echo //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} > .npmrc
