@@ -49,7 +49,7 @@ jobs:
           git config --global user.email "mdelgado@tresdoce.com.ar"
           npm version ${{ github.event.release.tag_name }}
           cd ./pkg
-          npm config set '//registry.npmjs.org/:_authToken' "${{ NODE_AUTH_TOKEN }}"
+          npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
           npm publish
           cd ..
           git push
