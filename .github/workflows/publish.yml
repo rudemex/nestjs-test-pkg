@@ -61,6 +61,6 @@ jobs:
       - name: "🏷️ Git Release ${{github.event.inputs.newVersion}}"
         run: |
           git tag -a ${{github.event.inputs.newVersion}} -m "${{github.event.inputs.newVersion}}"
-          git push --tags
+          git push
 
 
