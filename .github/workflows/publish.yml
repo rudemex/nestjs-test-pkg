@@ -1,12 +1,8 @@
 name: "NPM package"
 
 on:
-  workflow_dispatch:
-    inputs:
-      publishVersion:
-        description: 'Select version (patch | minor | major)'
-        required: true
-        default: 'patch'
+  release:
+    types: [published]
 
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -47,9 +43,13 @@ jobs:
         run: npm run test
         env:
           NODE_ENV: 'test'
-      - name: "🎉 Publish pkg - ${{ github.event.inputs.publishVersion }} version"
+      - name: "🎉 Publish pkg: ${{ github.event.release.tag_name }}"
         run: |
-          #cd ./pkg
-          #echo //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} > .npmrc
-          #npm access ls-collaborators nestjs-test-pkg
-          #npm run publish -- patch
+          git config --global user.name "GitHub CD bot"
+          git config --global user.email "mdelgado@tresdoce.com.ar"
+          npm version ${{ github.event.release.tag_name }}
+          cd ./pkg
+          npm config set '//registry.npmjs.org/:_authToken' "${{ NODE_AUTH_TOKEN }}"
+          npm publish
+          cd ..
+          git push
