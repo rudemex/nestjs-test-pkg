@@ -60,9 +60,8 @@ jobs:
           cd ..
       - name: "🏷️ Git Release ${{github.event.inputs.newVersion}}"
         run: |
-          ls
-          #git commit -am "${{github.event.inputs.newVersion}}"
-          #git tag -a ${{github.event.inputs.newVersion}} -m "${{github.event.inputs.newVersion}}"
-          #git push && git push --tags
+          git commit -am "${{github.event.inputs.newVersion}}"
+          git tag -a ${{github.event.inputs.newVersion}} -m "${{github.event.inputs.newVersion}}"
+          git push origin master --tags
 
 
