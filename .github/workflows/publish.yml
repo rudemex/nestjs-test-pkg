@@ -1,8 +1,12 @@
 name: "NPM package"
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      newVersion:
+        description: "Add version: v[MAJOR].[MINOR].[PATCH]"
+        required: true
+        default: 'v0.0.0'
 
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -43,12 +47,15 @@ jobs:
         run: npm run test
         env:
           NODE_ENV: 'test'
-      - name: "🎉 Publish pkg: ${{ github.event.release.tag_name }}"
+      - name: "🎉 Publish pkg: ${{github.event.inputs.newVersion}}"
         run: |
+          #${{ github.event.release.tag_name }}
+          #${{ github.event.release.tag_name }}
           git config --global user.name "GitHub CD bot"
           git config --global user.email "mdelgado@tresdoce.com.ar"
-          npm version ${{ github.event.release.tag_name }}
+          npm version ${{github.event.inputs.newVersion}}
+          cd ./pkg
           npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
-          npm publish --tag ${{ github.event.release.target_commitish }}
+          npm publish --tag ${{github.event.inputs.newVersion}}
       - run: git push
 
