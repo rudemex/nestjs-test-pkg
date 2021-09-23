@@ -49,17 +49,14 @@ jobs:
           NODE_ENV: 'test'
       - name: "🎉 Publish NPM PKG: ${{github.event.inputs.newVersion}}"
         run: |
-          #${{ github.event.release.tag_name }}
-          #${{ github.event.release.tag_name }}
           git config --global user.name "GitHub CD bot"
           git config --global user.email "mdelgado@tresdoce.com.ar"
           npm version ${{github.event.inputs.newVersion}}
           cd ./pkg
           npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
-          #npm publish
-          yarn npm publish
+          npm publish
           cd ..
-      - name: "🏷️ Create Release ${{github.event.inputs.newVersion}}"
+      - name: "🏷️ Create Release: ${{github.event.inputs.newVersion}}"
         uses: actions/create-release@v1
         with:
           tag_name: ${{github.event.inputs.newVersion}}
