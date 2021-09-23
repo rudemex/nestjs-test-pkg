@@ -57,7 +57,7 @@ jobs:
           cd ./pkg
           npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
           #npm publish
-          yarn publish
+          yarn npm publish
           cd ..
       - name: "🏷️ Create Release ${{github.event.inputs.newVersion}}"
         uses: actions/create-release@v1
