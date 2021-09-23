@@ -59,7 +59,7 @@ jobs:
           npm publish
       - name: "🏷️ Git Release ${{github.event.inputs.newVersion}}"
         run: |
-          #git push origin ${{github.event.inputs.newVersion}}
-          git release create ${{github.event.inputs.newVersion}} --title "${{github.event.inputs.newVersion}}"
+          git tag -a ${{github.event.inputs.newVersion}} -m "${{github.event.inputs.newVersion}}"
+          git push --tags
 
 
