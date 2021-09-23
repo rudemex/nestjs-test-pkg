@@ -56,6 +56,6 @@ jobs:
           npm version ${{github.event.inputs.newVersion}}
           cd ./pkg
           npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
-          npm publish --tag ${{github.event.inputs.newVersion}}
+          npm publish
       - run: git push
 
