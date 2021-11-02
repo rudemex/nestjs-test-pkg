@@ -29,7 +29,8 @@
     "clean": "shx rm -rf pkg",
     "prebuild": "npm run clean",
     "build": "pika build",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "lint": "eslint \"{src,apps,libs,test,__test__}/**/*.ts\" --fix",
+    "pre-commit": "lint-staged",
     "publish": "pika publish",
     "version": "npm run build",
     "test": "jest --runInBand --detectOpenHandles --coverage"
@@ -42,11 +43,6 @@
     "rxjs": "^7.3.0"
   },
   "dependencies": {
-    "@nestjs/common": "^8.0.6",
-    "@nestjs/core": "^8.0.6",
-    "@nestjs/platform-express": "^8.0.6",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.3.0",
     "shx": "^0.3.3"
   },
   "devDependencies": {
@@ -58,9 +54,10 @@
     "@babel/preset-typescript": "^7.15.0",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@nestjs/common": "^8.0.6",
-    "@nestjs/core": "^8.0.6",
-    "@nestjs/platform-express": "^8.0.6",
+    "@nestjs/cli": "^8.1.1",
+    "@nestjs/common": "^8.0.7",
+    "@nestjs/core": "^8.0.7",
+    "@nestjs/platform-express": "^8.0.7",
     "@nestjs/testing": "^8.0.6",
     "@pika/cli": "^0.2.0",
     "@pika/pack": "^0.5.0",
@@ -93,6 +90,9 @@
     "tsconfig-paths": "^3.11.0",
     "typescript": "^4.4.3"
   },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  },
   "prettier": {
     "semi": true,
     "tabWidth": 2,
@@ -103,8 +103,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged",
-      "pre-push": "jest"
+      "pre-commit": "lint-staged && jest"
     }
   },
   "lint-staged": {
@@ -116,7 +115,7 @@
   "@pika/pack": {
     "pipeline": [
       [
-        "@pika/plugin-standard-pkg",
+        "@pika/plugin-ts-standard-pkg",
         {
           "exclude": [
             "**/__test__/*"
