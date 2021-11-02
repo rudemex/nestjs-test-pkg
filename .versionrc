@@ -18,7 +18,7 @@
   },
   "bumpFiles":[
     {
-      "filename": "./pkg/package.json",
+      "filename": "pkg/package.json",
       "type": "json"
     }
   ]
