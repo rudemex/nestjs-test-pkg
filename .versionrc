@@ -10,5 +10,15 @@
     {"type": "perf", "hidden": true},
     {"type": "style", "hidden": true}
   ],
-  "issuePrefixes": ["#"]
+  "issuePrefixes": ["#"],
+  "bumpFiles":[
+      {
+        "filename": "package.json",
+        "type": "json"
+      },
+      {
+        "filename": "pkg/package.json",
+        "type": "json"
+      }
+    ]
 }
