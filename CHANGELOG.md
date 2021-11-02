@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/rudemex/nestjs-test-pkg/compare/v0.1.7...v0.2.0) (2021-11-02)
+
+
+### 🐛 Bug Fixes
+
+* **publish:** edit works publish file ([92dac16](https://github.com/rudemex/nestjs-test-pkg/commit/92dac162c91fdadfb1e4b53995113b060b95f6b5))
+* **publish:** fixed workflow publish 2 ([92b92ac](https://github.com/rudemex/nestjs-test-pkg/commit/92b92ac4bcfcad3526a44d737bf1d7aefc89c0fe))
+
 ### [0.1.7](https://github.com/rudemex/nestjs-test-pkg/compare/v0.1.6...v0.1.7) (2021-11-02)
 
 ### 👨‍💻 Chore
