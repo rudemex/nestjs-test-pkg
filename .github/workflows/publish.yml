@@ -59,12 +59,13 @@ jobs:
         run: |
           git config --global user.name "GitHub CD bot"
           git config --global user.email "${GITHUB_EMAIL}"
-          npm version v${{github.event.inputs.newVersion}}
+          #npm version v${{github.event.inputs.newVersion}}
+          npm run release -- --release-as ${{github.event.inputs.newVersion}}
+          npm run build
           cd ./pkg
           npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
           npm publish
           cd ..
-          npm run release -- --release-as ${{github.event.inputs.newVersion}}
           git push --follow-tags origin master
 
       - name: "📄 Create Changelog"

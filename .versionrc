@@ -12,7 +12,7 @@
   ],
   "issuePrefixes": ["#"],
   "skip": {
-    "bump": true,
+    "bump": false,
     "commit": false,
     "tag": false
   }
