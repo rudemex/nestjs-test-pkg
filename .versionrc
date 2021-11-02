@@ -11,14 +11,9 @@
     {"type": "style", "hidden": true}
   ],
   "issuePrefixes": ["#"],
-  "bumpFiles":[
-      {
-        "filename": "package.json",
-        "type": "json"
-      },
-      {
-        "filename": "pkg/package.json",
-        "type": "json"
-      }
-    ]
+  "skip": {
+    "bump": true,
+    "commit": false,
+    "tag": false
+  }
 }
