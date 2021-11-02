@@ -57,21 +57,10 @@ jobs:
 
       - name: "🎉 Publish NPM PKG: v${{github.event.inputs.newVersion}}"
         run: |
-          #git config --global user.name "GitHub CD bot"
-          #git config --global user.email "${GITHUB_EMAIL}"
-          #npm run release -- --release-as ${{github.event.inputs.newVersion}}
-          #npm run build
-          #cd ./pkg
-          #npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
-          #npm publish
-          #cd ..
-          #git push --follow-tags origin master
-          #####
-          #####
           git config --global user.name "GitHub CD bot"
           git config --global user.email "${GITHUB_EMAIL}"
-          npm version v${{github.event.inputs.newVersion}}
           npm run release -- --release-as ${{github.event.inputs.newVersion}}
+          npm run build
           cd ./pkg
           npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
           npm publish

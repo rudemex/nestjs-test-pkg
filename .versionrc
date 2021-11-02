@@ -15,11 +15,5 @@
     "bump": false,
     "commit": false,
     "tag": false
-  },
-  "bumpFiles":[
-    {
-      "filename": "pkg/package.json",
-      "type": "json"
-    }
-  ]
+  }
 }
