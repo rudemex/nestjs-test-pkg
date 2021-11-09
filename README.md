@@ -14,6 +14,8 @@
     <br/> 
 </p>
 
+---
+
 ## Glosario
 
 - [📝 Requerimientos básicos](#basic-requirements)
