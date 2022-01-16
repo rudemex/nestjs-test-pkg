@@ -83,15 +83,29 @@ jobs:
           REPO: ${{ github.repository }}
 
       - name: "🚀 Publish Release: ${{env.LATEST_TAG}}"
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           tag_name: "${{env.LATEST_TAG}}"
-          release_name: "${{env.LATEST_TAG}}"
+          name: "${{env.LATEST_TAG}}"
           body: |
             ${{ steps.Changelog.outputs.changelog }}
-
+            
             ---
-
+            
             > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
           draft: false
-          prerelease: false
+          prerelease: ${{ github.event.inputs.release == 'pre-release' }}
+          token: ${{GITHUB_TOKEN}}
+        #uses: actions/create-release@v1
+        #with:
+        #  tag_name: "${{env.LATEST_TAG}}"
+        #  release_name: "${{env.LATEST_TAG}}"
+        #  body: |
+        #    ${{ steps.Changelog.outputs.changelog }}
+        #
+        #    ---
+        #
+        #    > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
+        #  draft: false
+        #  prerelease: false
