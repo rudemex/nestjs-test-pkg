@@ -1,4 +1,4 @@
-name: "Publish pkg to NPM"
+name: "Publish PKG to NPM"
 
 on:
   workflow_dispatch:
@@ -12,10 +12,6 @@ on:
           - patch
           - minor
           - major
-      #newVersion:
-      #  description: "Version to publish: v[MAJOR].[MINOR].[PATCH]"
-      #  required: true
-      #  default: '0.0.0'
 
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -63,8 +59,6 @@ jobs:
         env:
           NODE_ENV: 'test'
 
-      #- name: "🎉 Publish NPM PKG: v${{github.event.inputs.newVersion}}"
-      #npm run release -- --release-as ${{github.event.inputs.newVersion}}
       - name: "🎉 Publish NPM PKG as ${{ github.event.inputs.release }} version"
         run: |
           git config --global user.name "GitHub CD bot"
@@ -88,8 +82,7 @@ jobs:
         env:
           REPO: ${{ github.repository }}
 
-      #- name: "🚀 Publish Release: v${{github.event.inputs.newVersion}}"
-      - name: "🚀 Publish Release"
+      - name: "🚀 Publish Release: ${{env.LATEST_TAG}}"
         uses: actions/create-release@v1
         with:
           tag_name: "${{env.LATEST_TAG}}"
