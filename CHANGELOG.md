@@ -1,6 +1,13 @@
-# Changelog
+<div align="center"><h1>📝 CHANGELOG</h1><p>All changes of this package will be documented in this file.</p></div>
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+---
+
+### [1.0.1-alpha.0](https://github.com/rudemex/nestjs-test-pkg/compare/v1.0.0...v1.0.1-alpha.0) (2022-01-16)
+
+
+### 👨‍💻 Chores
+
+* **versionrc:** edit version rc file ([7718d86](https://github.com/rudemex/nestjs-test-pkg/commit/7718d86d4c738fe09a7d676853c601f4e33b711d))
 
 ## [1.0.0](https://github.com/rudemex/nestjs-test-pkg/compare/v0.2.3...v1.0.0) (2022-01-16)
 
