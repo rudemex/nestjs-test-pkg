@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/rudemex/nestjs-test-pkg/compare/v0.2.3...v1.0.0) (2022-01-16)
+
 ### [0.2.3](https://github.com/rudemex/nestjs-test-pkg/compare/v0.2.3-alpha.0...v0.2.3) (2022-01-16)
 
 
