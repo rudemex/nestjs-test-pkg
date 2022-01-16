@@ -2,6 +2,13 @@
 
 ---
 
+### [1.2.2-alpha.1](https://github.com/rudemex/nestjs-test-pkg/compare/v1.2.2-alpha.0...v1.2.2-alpha.1) (2022-01-16)
+
+
+### 👨‍💻 Chores
+
+* **workflow:** changes action to release 3 ([90d45c9](https://github.com/rudemex/nestjs-test-pkg/commit/90d45c9a4084e88803d586578349b75dddd1ff61))
+
 ### [1.2.2-alpha.0](https://github.com/rudemex/nestjs-test-pkg/compare/v1.2.1...v1.2.2-alpha.0) (2022-01-16)
 
 
