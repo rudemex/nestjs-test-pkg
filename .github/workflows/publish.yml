@@ -74,7 +74,7 @@ jobs:
           npm publish --access public
           cd ..
           git push --follow-tags origin master
-          echo "LATEST_TAG=$(git tag -l | tail -1)" >> $GITHUB_ENV
+          echo "LATEST_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
 
       - name: "📄 Create Changelog"
         uses: Bullrich/generate-release-changelog@master
