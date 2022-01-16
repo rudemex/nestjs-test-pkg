@@ -2,6 +2,13 @@
 
 ---
 
+### [1.1.2-alpha.0](https://github.com/rudemex/nestjs-test-pkg/compare/v1.1.1...v1.1.2-alpha.0) (2022-01-16)
+
+
+### 🐛 Bug Fixes
+
+* **workflow:** get latest tag ([3005420](https://github.com/rudemex/nestjs-test-pkg/commit/3005420b6f5676d8adcfb21e934c07fa85ef042d))
+
 ### [1.1.1](https://github.com/rudemex/nestjs-test-pkg/compare/v1.1.1-alpha.1...v1.1.1) (2022-01-16)
 
 ### [1.1.1-alpha.1](https://github.com/rudemex/nestjs-test-pkg/compare/v1.1.1-alpha.0...v1.1.1-alpha.1) (2022-01-16)
