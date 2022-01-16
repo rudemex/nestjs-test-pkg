@@ -21,7 +21,6 @@ env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
-  IS_RELEASE:
 
 jobs:
   setup:
@@ -93,19 +92,13 @@ jobs:
       - name: "🚀 Publish Release"
         uses: actions/create-release@v1
         with:
-          tag_name: "${{github.ref}}"
-          release_name: "${{github.ref}}"
+          tag_name: "${{env.LATEST_TAG}}"
+          release_name: "${{env.LATEST_TAG}}"
           body: |
-            ${{env.LATEST_TAG}}
             ${{ steps.Changelog.outputs.changelog }}
 
             ---
 
             > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
           draft: false
-          prerelease: |
-            if ${{github.event.inputs.release == 'pre-release'}}; then 
-              echo true 
-            else 
-              echo false 
-            fi
+          prerelease: false
