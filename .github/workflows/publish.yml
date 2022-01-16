@@ -81,6 +81,7 @@ jobs:
           npm publish --access public
           cd ..
           git push --follow-tags origin master
+          echo "LATEST_TAG=$(git tag -l | tail -1)" >> $GITHUB_ENV
 
       - name: "📄 Create Changelog"
         uses: Bullrich/generate-release-changelog@master
@@ -95,6 +96,7 @@ jobs:
           tag_name: "${{github.ref}}"
           release_name: "${{github.ref}}"
           body: |
+            ${{env.LATEST_TAG}}
             ${{ steps.Changelog.outputs.changelog }}
 
             ---
