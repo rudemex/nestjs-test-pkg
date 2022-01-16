@@ -96,7 +96,7 @@ jobs:
             > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
           draft: false
           prerelease: ${{ github.event.inputs.release == 'pre-release' }}
-          token: ${{GITHUB_TOKEN}}
+
         #uses: actions/create-release@v1
         #with:
         #  tag_name: "${{env.LATEST_TAG}}"
