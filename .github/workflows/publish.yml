@@ -70,7 +70,7 @@ jobs:
           git config --global user.name "GitHub CD bot"
           git config --global user.email "${GITHUB_EMAIL}"
           if ${{github.event.inputs.release == 'pre-release'}}; then
-            npm run release -- --prerelease
+            npm run release -- --prerelease alpha
           else
             npm run release -- --release-as ${{github.event.inputs.release}}
           fi
